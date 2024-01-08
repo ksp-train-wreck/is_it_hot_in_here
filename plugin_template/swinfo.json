@@ -6,7 +6,7 @@
   "description": "",
   "source": "https://github.com/ksp-train-wreck/is_it_hot_in_here",
   "version": "0.1.0",
-  "version_check": "",
+  "version_check": "https://github.com/ksp-train-wreck/is_it_hot_in_here/blob/main/plugin_template/swinfo.json",
   "ksp2_version": {
     "min": "0.2.0",
     "max": "*"
