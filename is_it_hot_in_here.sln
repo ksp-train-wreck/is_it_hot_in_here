@@ -1,0 +1,34 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2CD424A0-1517-4D34-A88C-90DC39398004}") = "is_it_hot_in_here", "src/is_it_hot_in_here/is_it_hot_in_here.csproj", "{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}"
+EndProject
+Project("{2CD424A0-1517-4D34-A88C-90DC39398004}") = "is_it_hot_in_here.Unity", "src/is_it_hot_in_here.Unity/is_it_hot_in_here.Unity.csproj", "{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Deploy|Any CPU = Deploy|Any CPU
+		DeployAndRun|Any CPU = DeployAndRun|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.DeployAndRun|Any CPU.ActiveCfg = DeployAndRun|Any CPU
+		{EA25FC88-A7BB-4882-8B74-37EDB7DDB752}.DeployAndRun|Any CPU.Build.0 = DeployAndRun|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.DeployAndRun|Any CPU.ActiveCfg = DeployAndRun|Any CPU
+		{1EE7DFC3-568D-4158-9DD8-3B465E6FB991}.DeployAndRun|Any CPU.Build.0 = DeployAndRun|Any CPU
+	EndGlobalSection
+EndGlobal
+
+

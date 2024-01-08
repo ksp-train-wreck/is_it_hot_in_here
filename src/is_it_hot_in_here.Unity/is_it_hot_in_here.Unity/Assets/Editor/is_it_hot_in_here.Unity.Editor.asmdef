@@ -1,0 +1,14 @@
+{
+    "name": "is_it_hot_in_here.Unity.Editor",
+    "rootNamespace": "is_it_hot_in_here.Unity.Editor",
+    "references": [],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
