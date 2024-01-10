@@ -117,11 +117,17 @@ public class is_it_hot_in_herePlugin : BaseSpaceWarpPlugin
             // Manager.Instance.DoFlightUpdate();
             // Logger.LogInfo("My plugin loop!");
             // Logger.LogInfo("My plugin loop!");
+            try
+            {
 
+                WindowController.UpdateTick();
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e);
+            }
 
-            WindowController.UpdateTick();
-            
-            yield return new WaitForSeconds((float)250.0 / 1000);
+            yield return new WaitForSeconds((float)1000.0 / 1000);
         }
     }
 
