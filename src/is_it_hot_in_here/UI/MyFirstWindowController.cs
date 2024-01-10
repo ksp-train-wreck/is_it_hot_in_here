@@ -132,7 +132,7 @@ public class MyFirstWindowController : MonoBehaviour
             }
         }
 
-        Logger.LogWarning("CurrentData: " + CurrentData);
+        CurrentData.Sort((o1, o2) => o1.Item2.CompareTo(o2.Item2) * -1);
         
         _dataList.Rebuild();
     }
@@ -141,7 +141,37 @@ public class MyFirstWindowController : MonoBehaviour
     {
         // The "makeItem" function will be called as needed
         // when the TreeView needs more items to render
-        Func<VisualElement> makeItem = () => new Label();
+        Func<VisualElement> makeItem = () =>
+        {
+            var el = new VisualElement();
+            el.style.display = DisplayStyle.Flex;
+            el.style.flexDirection = FlexDirection.Row;
+            el.style.alignItems = Align.Center;
+            el.style.maxWidth = 400;
+            el.style.width = 400;
+            
+            var partLabel = new Label();
+            partLabel.style.flexGrow = 1;
+            partLabel.style.maxWidth = 220;
+            partLabel.style.textOverflow = TextOverflow.Ellipsis;
+            partLabel.style.overflow = Overflow.Hidden;
+            partLabel.style.whiteSpace = WhiteSpace.NoWrap;
+            
+            var tempLabel = new Label();
+            tempLabel.style.flexGrow = 0;
+            tempLabel.style.width = 75;
+            tempLabel.style.unityTextAlign = TextAnchor.MiddleRight;
+            
+            var maxTempLabel = new Label();
+            maxTempLabel.style.flexGrow = 0;
+            maxTempLabel.style.width = 75;
+            
+            el.Add(partLabel);
+            el.Add(tempLabel);
+            el.Add(maxTempLabel);
+
+            return el;
+        };
 
         // As the user scrolls through the list, the TreeView object
         // will recycle elements created by the "makeItem"
@@ -149,11 +179,17 @@ public class MyFirstWindowController : MonoBehaviour
         // the element with the matching data item (specified as an index in the list)
         Action<VisualElement, int> bindItem = (e, i) =>
         {
+            
             var data = CurrentData[i];
-            var txt = $"\n{data.Item1}: {data.Item2} (max: {data.Item3})";
+            
+            var el = e as VisualElement;
+            var partLabel = e.Children().ElementAt(0) as Label;
+            var tempLabel = e.Children().ElementAt(1) as Label;
+            var maxTempLabel = e.Children().ElementAt(2) as Label;
 
-            // var item = _dataList.GetItemDataForIndex<string>(i);
-            (e as Label).text = txt;
+            partLabel.text = data.Item1;
+            tempLabel.text = string.Format("{0:F1}", data.Item2);
+            maxTempLabel.text = string.Format("/ {0:F1}", data.Item3);
         };
 
         _dataList.makeItem = makeItem;
