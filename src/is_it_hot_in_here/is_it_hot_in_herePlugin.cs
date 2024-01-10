@@ -28,6 +28,10 @@ public class is_it_hot_in_herePlugin : BaseSpaceWarpPlugin
     internal const string ToolbarFlightButtonID = "BTN-is_it_hot_in_hereFlight";
     internal const string ToolbarOabButtonID = "BTN-is_it_hot_in_hereOAB";
     internal const string ToolbarKscButtonID = "BTN-is_it_hot_in_hereKSC";
+    
+    public Coroutine MainUpdateLoop;
+
+    public MyFirstWindowController WindowController;
 
     /// <summary>
     /// Runs when the mod is first initialized.
@@ -64,43 +68,61 @@ public class is_it_hot_in_herePlugin : BaseSpaceWarpPlugin
             IsHidingEnabled = true,
             // Whether to disable game input when typing into text fields.
             DisableGameInputForTextFields = true,
-            MoveOptions = new MoveOptions
+            MoveOptions = new MoveOptions   
             {
                 // Whether or not the window can be moved by dragging.
                 IsMovingEnabled = true,
                 // Whether or not the window can only be moved within the screen bounds.
-                CheckScreenBounds = true
+                CheckScreenBounds = true,
             }
         };
 
         // Create the window
         var myFirstWindow = Window.Create(windowOptions, myFirstWindowUxml);
         // Add a controller for the UI to the window's game object
-        var myFirstWindowController = myFirstWindow.gameObject.AddComponent<MyFirstWindowController>();
+        WindowController = myFirstWindow.gameObject.AddComponent<MyFirstWindowController>();
+        WindowController.IsWindowOpen = false;
 
         // Register Flight AppBar button
         Appbar.RegisterAppButton(
             ModName,
             ToolbarFlightButtonID,
             AssetManager.GetAsset<Texture2D>($"{ModGuid}/images/icon.png"),
-            isOpen => myFirstWindowController.IsWindowOpen = isOpen
+            isOpen => WindowController.IsWindowOpen = isOpen
         );
 
         // Register OAB AppBar Button
-        Appbar.RegisterOABAppButton(
-            ModName,
-            ToolbarOabButtonID,
-            AssetManager.GetAsset<Texture2D>($"{ModGuid}/images/icon.png"),
-            isOpen => myFirstWindowController.IsWindowOpen = isOpen
-        );
+        // Appbar.RegisterOABAppButton(
+        //     ModName,
+        //     ToolbarOabButtonID,
+        //     AssetManager.GetAsset<Texture2D>($"{ModGuid}/images/icon.png"),
+        //     isOpen => myFirstWindowController.IsWindowOpen = isOpen
+        // );
 
         // Register KSC AppBar Button
-        Appbar.RegisterKSCAppButton(
-            ModName,
-            ToolbarKscButtonID,
-            AssetManager.GetAsset<Texture2D>($"{ModGuid}/images/icon.png"),
-            () => myFirstWindowController.IsWindowOpen = !myFirstWindowController.IsWindowOpen
-        );
+        // Appbar.RegisterKSCAppButton(
+        //     ModName,
+        //     ToolbarKscButtonID,
+        //     AssetManager.GetAsset<Texture2D>($"{ModGuid}/images/icon.png"),
+        //     () => myFirstWindowController.IsWindowOpen = !myFirstWindowController.IsWindowOpen
+        // );
+
+        MainUpdateLoop = StartCoroutine(DoFlightUpdate());
+    }
+
+    private System.Collections.IEnumerator DoFlightUpdate()
+    {
+        while (true)
+        {
+            // Manager.Instance.DoFlightUpdate();
+            // Logger.LogInfo("My plugin loop!");
+            // Logger.LogInfo("My plugin loop!");
+
+
+            WindowController.UpdateTick();
+            
+            yield return new WaitForSeconds((float)250.0 / 1000);
+        }
     }
 
     /// <summary>
